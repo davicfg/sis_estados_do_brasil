@@ -22,7 +22,7 @@
     </nav>
     @yield('conteudo')
     <footer class="footer">
-        <p>© Livro de Laravel da Casa do Código.</p>
+        <p>Produzido por Davi Carvalho</p>
     </footer>
 </div>
 </body>

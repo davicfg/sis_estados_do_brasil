@@ -10,7 +10,7 @@
             @foreach ($estados as $e)
                 <tr>
                     <td>{{$e->nome}}</td>
-                    <td>{{$e->sigla}}</td>
+                    <td>{{$e->uf}}</td>
                     <td>{{$e->historico}} </td>
                     <td>
                         <a href="/estado/detalhes/{{$e->id}}">

@@ -2,9 +2,11 @@
 
 namespace estados\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use estados\Estado;
+use Request;
+
 class EstadoController extends Controller
 {
     /**
@@ -82,10 +84,25 @@ class EstadoController extends Controller
     {
         //
     }
+    public function adiciona()
+    {
+        $nome = Request::input('nome');
+        $uf = Request::input('uf');
+        $historico = Request::input('historico');
+
+        DB::insert('insert into estados (nome, uf, historico) 
+                  values (?,?,?)', array($nome, $uf, $historico));
+        return redirect()->action('ProdutoController@lista')->withInput(Request::only('nome'));
+
+    }
 
     public function lista ()
     {
-        $estados = Estado::all();
+        $estados = DB::select('select * from estados');
         return view('estado.listagem')->withProdutos($estados);
+    }
+
+    public function novo(){
+        return view('estado.formularioEstado');
     }
 }
